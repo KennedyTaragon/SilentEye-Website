@@ -1,0 +1,76 @@
+{% load static %}
+<section class="hero-section position-relative">
+    <!-- Carousel -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'website/images/hero-bg.jpg' %}" class="d-block w-100" alt="Security Services">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                    <p class="hero-tagline">OUR EXCEPTIONAL SECURITY SERVICE</p>
+                    <h1 class="hero-headline">Eagle Eye Security & Services, Your Shield of Protection</h1>
+                    <a href="#services" class="cta-button btn btn-primary">Our Services</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'website/images/hero-bg2.jpg' %}" class="d-block w-100" alt="Professional Security Guards">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                    <p class="hero-tagline">PROFESSIONAL SECURITY SOLUTIONS</p>
+                    <h1 class="hero-headline">Trained Guards for Your Safety</h1>
+                    <a href="#contact" class="cta-button btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'website/images/hero-bg3.jpg' %}" class="d-block w-100" alt="24/7 Support">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                    <p class="hero-tagline">ROUND THE CLOCK PROTECTION</p>
+                    <h1 class="hero-headline">24/7 Security Services</h1>
+                    <a href="#about" class="cta-button btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Bottom Info Cards -->
+    <div class="hero-info-cards position-absolute bottom-0 start-0 w-100">
+        <div class="container">
+            <div class="row g-2">
+                <div class="col-6 col-md-3">
+                    <div class="info-card text-center p-3">
+                        <i class="fas fa-medal fa-2x text-white mb-2"></i>
+                        <h6 class="text-white mb-1">Quality Services</h6>
+                        <p class="text-white small mb-0">Across India</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="info-card text-center p-3">
+                        <i class="fas fa-users fa-2x text-white mb-2"></i>
+                        <h6 class="text-white mb-1">Well Experienced</h6>
+                        <p class="text-white small mb-0">Security Guards</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="info-card text-center p-3">
+                        <i class="fas fa-clock fa-2x text-white mb-2"></i>
+                        <h6 class="text-white mb-1">Office Hours</h6>
+                        <p class="text-white small mb-0">10:00 am - 06:00 pm</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="info-card text-center p-3">
+                        <i class="fas fa-headset fa-2x text-white mb-2"></i>
+                        <h6 class="text-white mb-1">24/7 Support</h6>
+                        <p class="text-white small mb-0">For Any Query</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

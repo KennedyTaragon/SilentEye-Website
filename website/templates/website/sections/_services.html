@@ -1,0 +1,31 @@
+<div class="container">
+    <h2 class="text-center mb-5">Our Core Services</h2>
+    <div class="row">
+        {% for service in services %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 text-center shadow-sm">
+                <div class="card-body">
+                    {% if service.icon_class %}
+                    <i class="{{ service.icon_class }} display-3 text-primary mb-3"></i>
+                    {% else %}
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-cogs fa-2x text-white"></i>
+                    </div>
+                    {% endif %}
+                    <h5 class="card-title">{{ service.title }}</h5>
+                    <p class="card-text">{{ service.description|truncatechars:150 }}</p>
+                </div>
+                {% if service.featured_image %}
+                <div class="card-footer bg-transparent">
+                    <img src="{{ service.featured_image.url }}" alt="{{ service.title }}" class="img-fluid rounded">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p class="text-muted">Services will be added soon.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>

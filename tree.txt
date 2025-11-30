@@ -1,0 +1,59 @@
+.
+├── clients
+│   └── equity-bank-logo.png
+├── db.sqlite3
+├── logos
+│   └── logo.png
+├── manage.py
+├── products
+│   └── smart-hub-and-phone_doorbell-outdoor-copy.PNG
+├── push.sh
+├── req.txt
+├── services
+│   └── pexels-dsd-143941-914635.jpg
+├── silent_system
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── start.sh
+├── team
+│   └── cto.jpg
+├── tree.sh
+├── tree.txt
+└── website
+    ├── admin
+    │   ├── content.py
+    │   ├── core.py
+    │   ├── __init__.py
+    │   ├── portfolio.py
+    │   ├── products.py
+    │   └── team.py
+    ├── apps.py
+    ├── __init__.py
+    ├── models
+    │   ├── content.py
+    │   ├── core.py
+    │   ├── __init__.py
+    │   ├── portfolio.py
+    │   ├── products.py
+    │   └── team.py
+    ├── static
+    │   └── website
+    │       ├── css
+    │       ├── images
+    │       └── js
+    ├── templates
+    │   └── website
+    │       ├── base.html
+    │       ├── _footer.html
+    │       ├── _header.html
+    │       └── _hero.html
+    ├── tests.py
+    ├── urls.py
+    └── views
+        ├── home.py
+        └── __init__.py
+
+18 directories, 39 files

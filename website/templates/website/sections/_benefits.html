@@ -1,0 +1,28 @@
+<div class="container">
+    <h2 class="text-center mb-4">Why Choose Silent Eye</h2>
+    <p class="text-center text-muted mb-5">Trusted by businesses worldwide for comprehensive security solutions</p>
+    <div class="row text-center">
+        {% for benefit in benefits %}
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    {% if benefit.icon_class %}
+                    <i class="{{ benefit.icon_class }} display-4 text-primary mb-3"></i>
+                    {% else %}
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-star fa-2x text-white"></i>
+                    </div>
+                    {% endif %}
+                    <h1 class="display-4 text-accent mb-2">{{ benefit.statistic_value }}</h1>
+                    <h5 class="text-muted mb-3">{{ benefit.title }}</h5>
+                    <p class="card-text">{{ benefit.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p class="text-muted">Benefits and statistics will be added soon.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>

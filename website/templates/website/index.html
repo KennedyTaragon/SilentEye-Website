@@ -1,0 +1,103 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %}{{ site_config.company_name|default:"Silent Eye" }} - Home{% endblock %}
+
+{% block content %}
+
+{% include 'website/sections/_hero.html' %}
+
+<section id="about" class="py-5">
+    {% include 'website/sections/_about.html' %} 
+</section>
+
+<section id="benefits" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Why Choose Us</h2>
+        <div class="row text-center">
+            {% for benefit in benefits %}
+            <div class="col-md-4 mb-4">
+                <i class="{{ benefit.icon_class }} display-4 text-primary mb-2"></i>
+                <h1 class="display-3 text-primary">{{ benefit.statistic_value }}</h1> 
+                <h5 class="mt-2">{{ benefit.title }}</h5>
+                <p>{{ benefit.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="services" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Our Services</h2>
+        <div class="row">
+            {% for service in services %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center">
+                    {% if service.featured_image %}
+                    <img src="{{ service.featured_image.url }}" class="card-img-top" alt="{{ service.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <i class="{{ service.icon_class }} display-5 text-primary mb-3"></i> 
+                        <h5 class="card-title">{{ service.title }}</h5>
+                        <p class="card-text">{{ service.description|truncatechars:150 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="products" class="py-5 bg-light">
+    {% include 'website/sections/_products.html' %} 
+</section>
+
+<section id="team" class="py-5">
+    {% include 'website/sections/_team.html' %} 
+</section>
+
+<section id="testimonials" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">What Our Clients Say</h2>
+        <div class="row justify-content-center">
+            {% for testimonial in testimonials %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <p class="card-text">"{{ testimonial.quote }}"</p> 
+                        <footer class="blockquote-footer">
+                            {{ testimonial.client_name }}, {{ testimonial.position }} at {{ testimonial.company }}
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="blog" class="py-5">
+    {% include 'website/sections/_blog.html' %} 
+</section>
+
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Our Location</h5>
+                <div class="embed-responsive embed-responsive-16by9 mb-4">
+                    {{ site_config.map_embed_code|safe }}
+                </div>
+                <p><strong>Address:</strong> {{ site_config.address }}</p>
+                <p><strong>Phone:</strong> {{ site_config.phone }}</p>
+                <p><strong>Email:</strong> {{ site_config.email }}</p>
+            </div>
+            <div class="col-md-6">
+                <p>Contact form will be implemented here.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

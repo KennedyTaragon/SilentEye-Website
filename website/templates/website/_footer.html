@@ -1,0 +1,39 @@
+<footer class="bg-dark text-light py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>{{ site_config.company_name|default:"Silent Eye" }}</h5>
+        <p>{{ site_config.address }}</p>
+        <p>Phone: {{ site_config.phone }}</p>
+        <p>Email: {{ site_config.email }}</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Follow Us</h5>
+        <ul class="list-unstyled">
+          {% if site_config.facebook_url %}
+            <li><a href="{{ site_config.facebook_url }}" target="_blank">Facebook</a></li>
+          {% endif %}
+          {% if site_config.twitter_url %}
+            <li><a href="{{ site_config.twitter_url }}" target="_blank">Twitter</a></li>
+          {% endif %}
+          {% if site_config.linkedin_url %}
+            <li><a href="{{ site_config.linkedin_url }}" target="_blank">LinkedIn</a></li>
+          {% endif %}
+          {% if site_config.instagram_url %}
+            <li><a href="{{ site_config.instagram_url }}" target="_blank">Instagram</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'website:home' %}#about">About</a></li>
+          <li><a href="{% url 'website:home' %}#services">Services</a></li>
+          <li><a href="{% url 'website:home' %}#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p class="text-center">&copy; {% now "Y" %} {{ site_config.company_name|default:"Silent Eye" }}. All rights reserved.</p>
+  </div>
+</footer>

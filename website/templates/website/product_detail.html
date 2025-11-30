@@ -1,0 +1,185 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} - {{ site_config.company_name|default:"Silent Eye" }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'website:home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'website:product_list' %}">Products</a></li>
+                    {% if product.category %}
+                    <li class="breadcrumb-item">
+                        <a href="?category={{ product.category.slug }}">{{ product.category.name }}</a>
+                    </li>
+                    {% endif %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Product Image -->
+        <div class="col-lg-6 mb-4">
+            {% if product.image %}
+            <div class="product-image mb-3">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                     class="img-fluid rounded shadow-sm w-100">
+            </div>
+            {% else %}
+            <div class="bg-light d-flex align-items-center justify-content-center rounded shadow-sm" 
+                 style="height: 400px;">
+                <i class="fas fa-box fa-5x text-secondary"></i>
+            </div>
+            {% endif %}
+
+            <!-- Category Badge -->
+            {% if product.category %}
+            <div class="text-center">
+                <span class="badge bg-primary fs-6">{{ product.category.name }}</span>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-lg-6 mb-4">
+            <article class="product-details">
+                <header class="mb-4">
+                    <h1 class="display-4 mb-3">{{ product.name }}</h1>
+                    
+                    {% if product.price_range %}
+                    <div class="mb-3">
+                        <span class="h3 text-accent">{{ product.price_range }}</span>
+                    </div>
+                    {% endif %}
+                </header>
+
+                <!-- Description -->
+                <div class="product-description mb-4">
+                    <h5>Description</h5>
+                    <p>{{ product.description|linebreaks }}</p>
+                </div>
+
+                <!-- Specifications -->
+                {% if product.specifications %}
+                <div class="product-specifications mb-4">
+                    <h5>Specifications</h5>
+                    {% if product.specifications|is_dict %}
+                        <ul class="list-group list-group-flush">
+                            {% for key, value in product.specifications.items %}
+                            <li class="list-group-item d-flex justify-content-between">
+                                <strong>{{ key|title }}</strong>
+                                <span>{{ value }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% elif product.specifications|is_list %}
+                        <ul class="list-group list-group-flush">
+                            {% for spec in product.specifications %}
+                            <li class="list-group-item">
+                                <i class="fas fa-check text-success me-2"></i>
+                                {{ spec }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>{{ product.specifications|linebreaks }}</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Action Buttons -->
+                <div class="d-flex gap-2 mb-4">
+                    <a href="#contact" class="btn btn-primary btn-lg">
+                        <i class="fas fa-envelope me-2"></i>
+                        Request Quote
+                    </a>
+                    <a href="{% url 'website:product_list' %}" class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-arrow-left me-2"></i>
+                        Back to Products
+                    </a>
+                </div>
+
+                <!-- Social Share -->
+                <div class="product-share">
+                    <h6>Share this product:</h6>
+                    <div class="d-flex gap-2">
+                        <a href="https://twitter.com/intent/tweet?text={{ product.name|urlencode }}&url={{ request.build_absolute_uri|urlencode }}"
+                           target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}"
+                           target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri|urlencode }}"
+                           target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" onclick="navigator.clipboard.writeText('{{ request.build_absolute_uri }}')" 
+                           class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    {% if related_products %}
+    <div class="row mt-5">
+        <div class="col-12">
+            <section class="related-products">
+                <h3 class="mb-4">Related Products</h3>
+                <div class="row">
+                    {% for related_product in related_products %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            {% if related_product.image %}
+                            <img src="{{ related_product.image.url }}" class="card-img-top" 
+                                 alt="{{ related_product.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
+                                 style="height: 200px;">
+                                <i class="fas fa-box fa-2x text-secondary"></i>
+                            </div>
+                            {% endif %}
+
+                            <div class="card-body">
+                                <h6 class="card-title">{{ related_product.name }}</h6>
+                                {% if related_product.price_range %}
+                                <p class="text-accent fw-bold">{{ related_product.price_range }}</p>
+                                {% endif %}
+                                <p class="card-text small">{{ related_product.description|truncatechars:80 }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <a href="{% url 'website:product_detail' related_product.slug %}" 
+                                   class="btn btn-outline-primary btn-sm w-100">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Template filter for checking specifications format -->
+<script>
+// Simple template filter simulation for specifications display
+document.addEventListener('DOMContentLoaded', function() {
+    // This is just for client-side indication that JavaScript is working
+    console.log('Product detail page loaded successfully');
+});
+</script>
+{% endblock %}

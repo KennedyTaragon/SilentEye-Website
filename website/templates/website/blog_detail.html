@@ -1,0 +1,124 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }} - {{ site_config.company_name|default:"Silent Eye" }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'website:home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'website:blog_list' %}">Blog</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+                </ol>
+            </nav>
+
+            <!-- Article Header -->
+            <article class="blog-post">
+                {% if post.featured_image %}
+                <div class="mb-4">
+                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}"
+                         class="img-fluid rounded shadow-sm w-100">
+                </div>
+                {% endif %}
+
+                <header class="mb-4">
+                    <h1 class="display-4 mb-3">{{ post.title }}</h1>
+
+                    <div class="d-flex flex-wrap align-items-center text-muted mb-3">
+                        <div class="me-4">
+                            <i class="fas fa-user me-1"></i>
+                            <strong>{{ post.author.get_full_name|default:post.author.username }}</strong>
+                        </div>
+                        <div class="me-4">
+                            <i class="fas fa-calendar me-1"></i>
+                            {{ post.published_date|date:"F d, Y" }}
+                        </div>
+                        <div class="me-4">
+                            <i class="fas fa-eye me-1"></i>
+                            {{ post.views_count }} view{{ post.views_count|pluralize }}
+                        </div>
+                        <div>
+                            <i class="fas fa-clock me-1"></i>
+                            {{ post.updated_at|timesince }} ago
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Article Content -->
+                <div class="blog-content mb-5">
+                    {% if post.content %}
+                        {{ post.content|safe }}
+                    {% else %}
+                        <p class="text-muted">Content for this post is being prepared.</p>
+                    {% endif %}
+                </div>
+
+                <!-- Article Footer -->
+                <footer class="border-top pt-4 mb-5">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="share-buttons">
+                            <span class="me-2">Share:</span>
+                            <a href="https://twitter.com/intent/tweet?text={{ post.title|urlencode }}&url={{ request.build_absolute_uri|urlencode }}"
+                               target="_blank" class="btn btn-outline-primary btn-sm me-1">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}"
+                               target="_blank" class="btn btn-outline-primary btn-sm me-1">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri|urlencode }}"
+                               target="_blank" class="btn btn-outline-primary btn-sm">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+
+                        <a href="{% url 'website:blog_list' %}" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-arrow-left me-1"></i> Back to Blog
+                        </a>
+                    </div>
+                </footer>
+            </article>
+
+            <!-- Related Posts -->
+            {% if related_posts %}
+            <section class="related-posts">
+                <h3 class="mb-4">Related Posts</h3>
+                <div class="row">
+                    {% for related_post in related_posts %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 shadow-sm">
+                            {% if related_post.featured_image %}
+                            <img src="{{ related_post.featured_image.url }}" class="card-img-top"
+                                 alt="{{ related_post.title }}" style="height: 150px; object-fit: cover;">
+                            {% else %}
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
+                                 style="height: 150px;">
+                                <i class="fas fa-newspaper fa-2x text-secondary"></i>
+                            </div>
+                            {% endif %}
+
+                            <div class="card-body">
+                                <h6 class="card-title">
+                                    <a href="{% url 'website:blog_detail' related_post.slug %}"
+                                       class="text-decoration-none text-dark">
+                                        {{ related_post.title|truncatechars:50 }}
+                                    </a>
+                                </h6>
+                                <p class="card-text small text-muted">
+                                    {{ related_post.published_date|date:"M d, Y" }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
