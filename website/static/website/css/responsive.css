@@ -1,0 +1,337 @@
+/* ========================================
+   SILENT EYE - RESPONSIVE DESIGN
+   ======================================== */
+
+/* Large screens */
+@media (max-width: 1200px) {
+  .hero-headline {
+    font-size: 3.5rem;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 992px) {
+  .hero-headline {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  /* Tablet-specific navbar adjustments */
+  .navbar {
+    padding: 0.5rem 0;
+  }
+
+  .navbar-brand img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .top-bar {
+    padding: 0.75rem 0;
+  }
+
+  .top-bar small {
+    font-size: 0.8rem;
+  }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  section {
+    padding: 3rem 0;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  /* About section mobile styles */
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .about-image {
+    margin-bottom: 2rem;
+  }
+
+  .about-image img {
+    height: 250px;
+  }
+
+  .about-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .about-content p {
+    font-size: 1rem;
+  }
+
+  .simple-stat {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  /* Contact section mobile styles */
+  .contact-form-card .card-title {
+    font-size: 1.25rem;
+  }
+
+  .contact-form-card .form-control {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .contact-form-card .btn-primary {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .contact-item {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .contact-icon i {
+    font-size: 0.9rem;
+  }
+
+  .contact-text {
+    font-size: 0.9rem;
+  }
+
+  .contact-info-card .card-title,
+  .quick-contact-card .card-title {
+    font-size: 1.1rem;
+  }
+
+  .map-embed {
+    height: 220px;
+  }
+
+  .map-embed iframe {
+    height: 100%;
+  }
+
+  .map-placeholder {
+    padding: 2rem 1.5rem;
+  }
+
+  .map-placeholder i {
+    font-size: 2.5rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 576px) {
+  .hero-headline {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  /* Top bar responsive */
+  .top-bar {
+    padding: 0.5rem 0; /* Reduce padding for smaller height */
+  }
+
+  .top-bar .col-lg-4 {
+    text-align: center !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .top-bar .col-lg-4:last-child {
+    margin-bottom: 0;
+  }
+
+  .top-bar small {
+    font-size: 0.75rem;
+  }
+
+  .navbar {
+    padding: 0.5rem 0; /* Reduce navbar padding on small screens */
+  }
+
+  .navbar-brand img {
+    width: 45px !important; /* Smaller logo on mobile */
+    height: 45px !important;
+  }
+
+  .top-bar .d-flex {
+    justify-content: center; /* Center icons on mobile */
+    gap: 0.75rem; /* Reduce gap */
+  }
+
+  /* Hide certification text on mobile to save space */
+  .top-bar .col-lg-4.d-none.d-lg-block {
+    display: none !important;
+  }
+
+  /* Additional mobile fixes */
+  .hero-section {
+    min-height: 70vh; /* Reduce from 100vh for mobile */
+  }
+
+  section {
+    padding: 2rem 0; /* Reduce section padding */
+  }
+
+  .card-img-top {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    min-height: 44px; /* Touch-friendly */
+  }
+
+  p, .card-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .embed-responsive {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .embed-responsive-16by9 {
+    padding-bottom: 56.25%;
+  }
+
+  .embed-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+  }
+
+  /* Social media icons responsive */
+  .top-bar .d-flex {
+    justify-content: center; /* Center icons on mobile */
+    gap: 1rem; /* Reduce gap */
+  }
+  .top-bar .col-lg-4.text-end {
+    text-align: center !important; /* Override Bootstrap */
+  }
+
+  /* Mobile-specific scroll margin for smaller navbar */
+  section {
+    scroll-margin-top: 80px; /* Mobile-optimized margin */
+  }
+
+  /* Hero carousel responsive */
+  .hero-section .carousel-item img {
+    height: 70vh; /* Match mobile hero height */
+  }
+  .hero-section .carousel-caption {
+    padding: 1rem;
+  }
+  .hero-tagline {
+    font-size: 1rem;
+  }
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+  .hero-info-cards .col-6 {
+    margin-bottom: 0.5rem;
+  }
+  .info-card {
+    padding: 1rem !important;
+  }
+  .info-card i {
+    font-size: 1.5rem;
+  }
+
+  /* Extra small screens - map adjustments */
+  .map-embed {
+    height: 200px;
+  }
+
+  .map-placeholder {
+    padding: 1.5rem 1rem;
+  }
+
+  .map-placeholder i {
+    font-size: 2rem;
+  }
+
+  .map-placeholder p {
+    font-size: 0.9rem;
+  }
+
+  /* Contact section mobile layout adjustments */
+  .contact-section .col-lg-8,
+  .contact-section .col-lg-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .contact-section .col-lg-4 > div:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .map-card {
+    margin-top: 0.5rem;
+  }
+
+  /* Contact form mobile adjustments */
+  .contact-form-card {
+    margin-bottom: 1.5rem;
+  }
+}

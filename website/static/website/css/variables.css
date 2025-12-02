@@ -1,0 +1,33 @@
+/* ========================================
+   SILENT EYE - CSS VARIABLES
+   ======================================== */
+
+/* CSS Custom Properties (Variables) */
+:root {
+  /* Color Scheme */
+  --primary-color: #700808;      /* Deep Navy Blue */
+  --accent-color: #080707;       /* Rich Crimson */
+  --secondary-color: #1A1A1A;    /* Near Black */
+  --background-light: #F4F4F9;   /* Very Light Gray */
+  --text-dark: #1A1A1A;
+  --text-light: #FFFFFF;
+  --text-muted: #6C757D;
+
+  /* Typography */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-secondary: 'Inter', sans-serif;
+
+  /* Spacing */
+  --section-padding: 5rem 0;
+  --container-padding: 0 15px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+  --shadow-hover: 0 12px 24px rgba(0, 68, 136, 0.15);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}

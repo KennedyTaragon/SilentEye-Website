@@ -1,118 +1,202 @@
-<div class="container">
-    <h2 class="text-center mb-5">Contact Us</h2>
-    <div class="row">
-        <div class="col-lg-6 mb-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title mb-4">Get In Touch</h5>
-                    
-                    <!-- Success/Error Messages -->
-                    {% if messages %}
-                        {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        {% endfor %}
-                    {% endif %}
-                    
-                    <form method="POST" action="{% url 'website:contact_submit' %}">
-                        {% csrf_token %}
-                        
-                        <!-- Name Field -->
-                        <div class="mb-3">
-                            <label for="{{ form.name.id_for_label }}" class="form-label">Name *</label>
-                            {{ form.name }}
-                            {% if form.name.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.name.errors|join:", " }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        
-                        <!-- Email Field -->
-                        <div class="mb-3">
-                            <label for="{{ form.email.id_for_label }}" class="form-label">Email *</label>
-                            {{ form.email }}
-                            {% if form.email.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.email.errors|join:", " }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        
-                        <!-- Phone Field -->
-                        <div class="mb-3">
-                            <label for="{{ form.phone.id_for_label }}" class="form-label">Phone</label>
-                            {{ form.phone }}
-                            {% if form.phone.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.phone.errors|join:", " }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        
-                        <!-- Subject Field -->
-                        <div class="mb-3">
-                            <label for="{{ form.subject.id_for_label }}" class="form-label">Subject *</label>
-                            {{ form.subject }}
-                            {% if form.subject.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.subject.errors|join:", " }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        
-                        <!-- Message Field -->
-                        <div class="mb-3">
-                            <label for="{{ form.message.id_for_label }}" class="form-label">Message *</label>
-                            {{ form.message }}
-                            {% if form.message.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.message.errors|join:", " }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane me-2"></i>Send Message
-                        </button>
-                    </form>
-                </div>
+{% load static %}
+<section id="contact" class="contact-section">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">
+                    Ready to secure your world? Contact us today for a free consultation and personalized security solution.
+                </p>
             </div>
         </div>
-        <div class="col-lg-6 mb-4">
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Our Information</h5>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <p><strong>Address:</strong><br>{{ site_config.address|default:"Address will be added soon" }}</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p><strong>Phone:</strong><br>{{ site_config.phone|default:"Phone will be added soon" }}</p>
-                            <p><strong>Email:</strong><br>{{ site_config.email|default:"Email will be added soon" }}</p>
-                        </div>
+
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-8 mb-5">
+                <div class="contact-form-card">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">
+                            <i class="fas fa-paper-plane text-primary me-2"></i>
+                            Send Us a Message
+                        </h3>
+                        
+                        <!-- Success/Error Messages -->
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                        
+                        <form method="POST" action="{% url 'website:contact_submit' %}" id="contactForm">
+                            {% csrf_token %}
+                            
+                            <div class="row">
+                                <!-- Name Field -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.name.id_for_label }}" class="form-label">Full Name *</label>
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.name.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Email Field -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.email.id_for_label }}" class="form-label">Email Address *</label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.email.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <!-- Phone Field -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.phone.id_for_label }}" class="form-label">Phone Number</label>
+                                    {{ form.phone }}
+                                    {% if form.phone.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.phone.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Subject Field -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.subject.id_for_label }}" class="form-label">Subject *</label>
+                                    {{ form.subject }}
+                                    {% if form.subject.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.subject.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Message Field -->
+                            <div class="mb-4">
+                                <label for="{{ form.message.id_for_label }}" class="form-label">Message *</label>
+                                {{ form.message }}
+                                {% if form.message.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.message.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                                <i class="fas fa-paper-plane me-2"></i>
+                                <span id="btnText">Send Message</span>
+                                <span id="btnSpinner" class="spinner-border spinner-border-sm ms-2" style="display: none;"></span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            {% if site_config.map_embed_code %}
-            <div class="card shadow-sm">
-                <div class="card-body p-0">
-                    <div class="map-embed">
-                        {{ site_config.map_embed_code|safe }}
+            <!-- Contact Information -->
+            <div class="col-lg-4">
+                <!-- Contact Details -->
+                <div class="contact-info-card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">
+                            <i class="fas fa-info-circle text-primary me-2"></i>
+                            Contact Information
+                        </h4>
+                        <div class="contact-details">
+                            {% if site_config.address %}
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <strong>Address</strong><br>
+                                    {{ site_config.address }}
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            {% if site_config.phone %}
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <strong>Phone</strong><br>
+                                    <a href="tel:{{ site_config.phone }}" class="text-decoration-none">{{ site_config.phone }}</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            {% if site_config.email %}
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <strong>Email</strong><br>
+                                    <a href="mailto:{{ site_config.email }}" class="text-decoration-none">{{ site_config.email }}</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% else %}
-            <div class="card shadow-sm">
-                <div class="card-body text-center">
-                    <i class="fas fa-map-marked-alt fa-3x text-muted mb-3"></i>
-                    <p class="text-muted">Map location will be added soon</p>
+
+                <!-- Quick Contact Options -->
+                <div class="quick-contact-card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">
+                            <i class="fas fa-bolt text-primary me-2"></i>
+                            Quick Contact
+                        </h4>
+                        <div class="quick-actions">
+                            {% if site_config.phone %}
+                            <a href="tel:{{ site_config.phone }}" class="btn btn-outline-primary w-100 mb-2">
+                                <i class="fas fa-phone me-2"></i>Call Now
+                            </a>
+                            {% endif %}
+                            
+                            {% if site_config.email %}
+                            <a href="mailto:{{ site_config.email }}" class="btn btn-outline-primary w-100 mb-2">
+                                <i class="fas fa-envelope me-2"></i>Send Email
+                            </a>
+                            {% endif %}
+                            
+                            <a href="#contact" class="btn btn-primary w-100">
+                                <i class="fas fa-comments me-2"></i>Live Chat
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Map -->
+                {% if site_config.map_embed_code %}
+                <div class="map-card">
+                    <div class="card-body p-0">
+                        <div class="map-embed">
+                            {{ site_config.map_embed_code|safe }}
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="map-placeholder">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt fa-3x text-muted mb-3"></i>
+                        <p class="text-muted">Interactive map will be available soon</p>
+                    </div>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
     </div>
-</div>
+</section>

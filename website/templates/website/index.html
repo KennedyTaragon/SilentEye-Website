@@ -81,23 +81,7 @@
     {% include 'website/sections/_blog.html' %} 
 </section>
 
-<section id="contact" class="py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-4">Contact Us</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <h5>Our Location</h5>
-                <div class="embed-responsive embed-responsive-16by9 mb-4">
-                    {{ site_config.map_embed_code|safe }}
-                </div>
-                <p><strong>Address:</strong> {{ site_config.address }}</p>
-                <p><strong>Phone:</strong> {{ site_config.phone }}</p>
-                <p><strong>Email:</strong> {{ site_config.email }}</p>
-            </div>
-            <div class="col-md-6">
-                <p>Contact form will be implemented here.</p>
-            </div>
-        </div>
-    </div>
+<section id="contact" class="py-5">
+    {% include 'website/sections/_contact.html' %}
 </section>
 {% endblock %}

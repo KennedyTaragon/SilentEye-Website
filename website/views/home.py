@@ -43,6 +43,7 @@ def homepage_view(request):
         'testimonials': testimonials,
         'benefits': benefits,
         'team_members': team_members,
+        'form': ContactForm(),  # Add contact form to context
     }
     return render(request, 'website/index.html', context)
 
@@ -61,7 +62,7 @@ def contact_form_view(request):
             messages.success(request, 'Thank you for your message! We will get back to you soon.')
             
             # Redirect to homepage with contact anchor and success message
-            return redirect('website:home')  # messages will be automatically passed
+            return redirect('website:home') + '#contact'
         else:
             # Add error message
             messages.error(request, 'Please correct the errors below and try again.')

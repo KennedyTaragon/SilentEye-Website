@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initMobileMenuHandling();
     initHideOnScroll(THROTTLE_LIMIT);
+    initContactForm();
 });
 
 // --- CORE FEATURE INITIALIZATION ---
@@ -230,6 +231,109 @@ function initHideOnScroll(throttleLimit) {
             isHidden = false;
         }
     });
+}
+
+// --- CONTACT FORM FUNCTIONALITY ---
+
+/**
+ * Initialize contact form enhancements
+ */
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnSpinner = document.getElementById('btnSpinner');
+    
+    if (!contactForm || !submitBtn) return;
+
+    // Form validation and enhancement
+    const inputs = contactForm.querySelectorAll('input, textarea, select');
+    
+    // Add real-time validation
+    inputs.forEach(input => {
+        input.addEventListener('blur', validateField);
+        input.addEventListener('input', clearFieldErrors);
+    });
+
+    // Form submission handler
+    contactForm.addEventListener('submit', function(e) {
+        if (!validateForm()) {
+            e.preventDefault();
+            return;
+        }
+
+        // Show loading state
+        setLoadingState(true);
+    });
+
+    function validateField(e) {
+        const field = e.target;
+        const value = field.value.trim();
+        
+        // Remove existing validation classes
+        field.classList.remove('is-valid', 'is-invalid');
+        
+        if (field.hasAttribute('required') && !value) {
+            field.classList.add('is-invalid');
+            return false;
+        }
+        
+        // Email validation
+        if (field.type === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                field.classList.add('is-invalid');
+                return false;
+            }
+        }
+        
+        // Name validation
+        if (field.name === 'name' && value && value.length < 2) {
+            field.classList.add('is-invalid');
+            return false;
+        }
+        
+        // Message validation
+        if (field.name === 'message' && value && value.length < 10) {
+            field.classList.add('is-invalid');
+            return false;
+        }
+        
+        // If validation passes and field has content
+        if (value) {
+            field.classList.add('is-valid');
+        }
+        
+        return true;
+    }
+
+    function clearFieldErrors(e) {
+        const field = e.target;
+        field.classList.remove('is-invalid');
+    }
+
+    function validateForm() {
+        let isValid = true;
+        inputs.forEach(input => {
+            const event = { target: input };
+            if (!validateField(event)) {
+                isValid = false;
+            }
+        });
+        return isValid;
+    }
+
+    function setLoadingState(loading) {
+        if (loading) {
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
+            btnSpinner.style.display = 'inline-block';
+        } else {
+            submitBtn.disabled = false;
+            btnText.textContent = 'Send Message';
+            btnSpinner.style.display = 'none';
+        }
+    }
 }
 
 // --- UTILITY FUNCTIONS (Kept for external use) ---
