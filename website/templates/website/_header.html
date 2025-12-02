@@ -7,9 +7,9 @@
         <div class="row align-items-center">
           <!-- Left: Contact Info -->
           <div class="col-lg-4 col-md-6">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center flex-column flex-md-row">
               {% if site_config.email %}
-              <small class="me-3">
+              <small class="me-md-3 mb-1 mb-md-0">
                 <i class="fas fa-envelope me-1"></i>
                 <a href="mailto:{{ site_config.email }}" class="text-white text-decoration-none">
                   {{ site_config.email }}
@@ -37,7 +37,7 @@
 
           <!-- Right: Social Media -->
           <div class="col-lg-4 col-md-6 text-end">
-            <div class="d-flex justify-content-end align-items-center gap-2 flex-nowrap">
+            <div class="d-flex justify-content-center justify-content-md-end align-items-center gap-3 flex-nowrap">
               {% if site_config.facebook_url %}
               <a href="{{ site_config.facebook_url }}" target="_blank"
                  class="text-white text-decoration-none" title="Facebook">
@@ -73,7 +73,7 @@
       <div class="container">
         <a class="navbar-brand" href="{% url 'website:home' %}#hero">
           {% if site_config.logo %}
-            <img src="{{ site_config.logo.url }}" alt="{{ site_config.company_name }}" width="60" height="60">
+            <img src="{{ site_config.logo.url }}" alt="{{ site_config.company_name }}" width="50" height="50">
           {% else %}
             {{ site_config.company_name|default:"Silent Eye" }}
           {% endif %}
@@ -108,7 +108,7 @@
                  href="{% url 'website:home' %}#benefits">Benefits</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name in 'blog_list,blog_detail' %}active{% endif %}"
+              <a class="nav-link {% if request.resolver_match.url_name == 'blog_list' or request.resolver_match.url_name == 'blog_detail' %}active{% endif %}"
                  href="{% url 'website:blog_list' %}">Blog</a>
             </li>
             <li class="nav-item">

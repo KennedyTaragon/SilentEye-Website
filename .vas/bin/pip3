@@ -1,4 +1,4 @@
-#!/home/vas/silenteye/.vas/bin/python3
+#!/home/kali/django_projects/silenteye/.vas/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

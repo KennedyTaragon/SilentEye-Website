@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class SiteConfig(models.Model):
+    singleton_enforcer = models.BooleanField(default=True, unique=True, editable=False)
     company_name = models.CharField(max_length=255)
     logo = models.ImageField(upload_to='logos/', blank=True, null=True)
     email = models.EmailField()
