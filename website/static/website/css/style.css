@@ -243,7 +243,7 @@ p {
 
 section {
   padding: var(--section-padding);
-  scroll-margin-top: 80px; /* Account for fixed header + top bar (reduced height) */
+  scroll-margin-top: 100px; /* Account for fixed header + top bar (standard height) */
 }
 
 section:nth-child(even) {
@@ -556,7 +556,7 @@ section:nth-child(even) {
 
   /* Mobile-specific scroll margin for smaller navbar */
   section {
-    scroll-margin-top: 65px; /* Smaller margin for mobile */
+    scroll-margin-top: 80px; /* Mobile-optimized margin */
   }
 
   /* Hero carousel responsive */
