@@ -1,46 +1,35 @@
 #!/usr/bin/env bash
-# Exit on error
+# Exit immediately if a command exits with a non-zero status
 set -o errexit
 
-# Print useful debug info
+echo "=== Render Build Script Starting ==="
 echo "Current directory: $(pwd)"
-echo "Python version: $(python3 --version)"
-echo "Setting RENDER=True for deployment"
+echo "Python version: $(python --version)"
+
+# Set environment variable to indicate deployment
 export RENDER=True
 
-# Upgrade pip and install requirements
+# Upgrade pip and install dependencies
+echo "Installing dependencies..."
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# Create necessary directories
+# Ensure required directories exist
+echo "Creating necessary directories..."
+mkdir -p static
 mkdir -p staticfiles
-mkdir -p media/secure_uploads
-
-# Logging setup
+mkdir -p media
 mkdir -p logs
-touch logs/django.log logs/security.log logs/access.log
-chmod 777 logs/django.log logs/security.log logs/access.log
 
-# Clean static files directory
-echo "Cleaning staticfiles directory"
-rm -rf staticfiles/*
+# Optional: create log files (not required for Render logging)
+touch logs/django.log logs/security.log logs/access.log
 
 # Collect static files
-echo "Collecting static files with Django..."
-python3 manage.py collectstatic --no-input --clear
-
-# Verify static files were collected
-echo "Static files directory contents:"
-ls -la staticfiles/
+echo "Collecting static files..."
+python manage.py collectstatic --no-input --clear
 
 # Apply database migrations
 echo "Applying database migrations..."
-python3 manage.py migrate
+python manage.py migrate --no-input
 
-# Fix gunicorn permissions - adding only this section to your original script
-which gunicorn
-echo "Making gunicorn executable..."
-chmod 755 $(which gunicorn) 2>/dev/null || echo "Could not change gunicorn permissions directly"
-
-echo "Build script completed successfully!"
-#DATA
+echo "=== Build completed successfully ==="
