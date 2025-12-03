@@ -141,20 +141,34 @@
     font-size: 1.1rem;
   }
 
-  .map-embed {
-    height: 220px;
+  /* Full-width map responsive adjustments */
+  .full-width-map-embed {
+    height: 350px;
   }
 
-  .map-embed iframe {
+  .full-width-map-embed iframe {
     height: 100%;
   }
 
-  .map-placeholder {
-    padding: 2rem 1.5rem;
+  .full-width-map-placeholder {
+    padding: 3rem 2rem;
   }
 
-  .map-placeholder i {
-    font-size: 2.5rem;
+  .full-width-map-placeholder i {
+    font-size: 3.5rem;
+  }
+
+  .full-width-map-placeholder h4 {
+    font-size: 1.25rem;
+  }
+
+  .full-width-map-placeholder p {
+    font-size: 1rem;
+  }
+
+  .map-title {
+    padding: 1.25rem 1.5rem;
+    font-size: 1.25rem;
   }
 }
 
@@ -298,21 +312,34 @@
     font-size: 1.5rem;
   }
 
-  /* Extra small screens - map adjustments */
-  .map-embed {
-    height: 200px;
+  /* Extra small screens - full-width map adjustments */
+  .full-width-map-embed {
+    height: 300px;
   }
 
-  .map-placeholder {
-    padding: 1.5rem 1rem;
+  .full-width-map-embed iframe {
+    height: 100%;
   }
 
-  .map-placeholder i {
-    font-size: 2rem;
+  .full-width-map-placeholder {
+    padding: 2.5rem 1.5rem;
   }
 
-  .map-placeholder p {
+  .full-width-map-placeholder i {
+    font-size: 3rem;
+  }
+
+  .full-width-map-placeholder h4 {
+    font-size: 1.1rem;
+  }
+
+  .full-width-map-placeholder p {
     font-size: 0.9rem;
+  }
+
+  .map-title {
+    padding: 1rem 1.25rem;
+    font-size: 1.1rem;
   }
 
   /* Contact section mobile layout adjustments */

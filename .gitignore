@@ -91,6 +91,7 @@ celerybeat-schedule
 .env
 .venv
 env/
+env
 venv/
 ENV/
 env.bak/
@@ -135,3 +136,123 @@ staticfiles/
 
 # Documents
 Documents/
+
+# ================================
+# Production & Deployment Files
+# ================================
+
+# Database backups and dumps - TEMPORARILY ENABLED FOR RENDER DEPLOYMENT
+# *.sql
+# *.dump
+# *.backup
+# *.bak
+# backup_*.sql
+# db_backup_*.sql
+# silenteye_*.backup
+# silenteye_*.sql
+# *.db
+# *.sqlite
+
+# Media files (user uploads) - TEMPORARILY ENABLED FOR RENDER DEPLOYMENT
+# media/
+# uploads/
+# static/media/
+# user_uploads/
+
+# Environment files (contain sensitive data)
+.env
+.env.local
+.env.production
+.env.staging
+.env.*.local
+
+# Log files
+*.log
+logs/
+*.out
+
+# Environment configuration
+.env.local
+.env.production
+.env.staging
+config.json
+settings_local.py
+
+# Production builds
+staticfiles/
+static/
+assets/
+*.min.js
+*.min.css
+
+# Cache directories
+.cache/
+temp/
+tmp/
+*.tmp
+
+# SSL certificates and keys
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.pfx
+
+# Deployment scripts (if they contain sensitive data)
+deploy_*.sh
+deploy_*.py
+*.deploy
+
+# Testing and staging files
+test_*.py
+staging_*.py
+dev_*.py
+
+# IDE specific files (additional)
+.idea/
+.vscode/settings.json
+.vscode/launch.json
+*.sublime-project
+*.sublime-workspace
+
+# System files (additional)
+Desktop.ini
+$RECYCLE.BIN/
+System Volume Information/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Performance and monitoring
+*.pid
+*.seed
+*.pid.lock
+.nyc_output
+
+# Package managers
+.yarn/
+.yarn-integrity
+.pnpm-store/
+
+# Docker
+Dockerfile.prod
+docker-compose.override.yml
+.dockerignore
+
+# Kubernetes
+*.yaml.local
+*.yml.local
+
+# Server configurations
+nginx.conf.local
+apache.conf.local
+httpd.conf.local
+
+# Monitoring and analytics
+analytics/
+monitoring/
+grafana_data/
+prometheus_data/
