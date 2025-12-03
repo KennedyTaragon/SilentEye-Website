@@ -1,10 +1,13 @@
-
 #!/bin/bash
 
 # Colors for better terminal output
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
+
+# Check current branch
+current_branch=$(git branch --show-current)
+echo -e "${YELLOW}Current branch: ${current_branch}${NC}"
 
 # Check for unstaged changes
 echo -e "${YELLOW}Checking for changes...${NC}"
@@ -31,13 +34,14 @@ fi
 echo -e "${YELLOW}Committing changes...${NC}"
 git commit -m "$commit_message"
 
-# Push to remote repository
-echo -e "${YELLOW}Pushing to remote repository...${NC}"
-git push
+# Push to main branch
+echo -e "${YELLOW}Pushing to main branch...${NC}"
+git push origin main
 
 # Confirm successful push
 if [ $? -eq 0 ]; then
-    echo -e "${GREEN}Successfully pushed to remote repository!${NC}"
+    echo -e "${GREEN}Successfully pushed to main branch!${NC}"
 else
-    echo "Failed to push to remote repository."
+    echo "Failed to push to main branch."
+    exit 1
 fi
